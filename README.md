@@ -12,7 +12,7 @@ This is usually done by running one of the following (note the leading DOT):
 source "$HOME/.cargo/env.fish"  # For fish
 
 ----------------------
-'''code
+```rust
 
 use bonsai_bt::{Behavior, Sequence, Invert, Condition};
 
@@ -41,4 +41,22 @@ fn main() {
         behavior_tree.tick();
     }
 }
-'''
+```
+
+```rust
+use std::sync::mpsc;
+
+fn main() {
+    // Create a channel
+    let (tx, rx) = mpsc::channel();
+
+    // Spawn a thread to send data
+    std::thread::spawn(move || {
+        tx.send("Hello from sender!").unwrap();
+    });
+
+    // Receive data in the main thread
+    let received_data = rx.recv().unwrap();
+    println!("Received: {}", received_data);
+}
+```
